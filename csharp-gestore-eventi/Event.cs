@@ -79,6 +79,43 @@ namespace csharp_gestore_eventi
         }
 
         // Public Methods
+        // PrenotaPosti: aggiunge i posti passati come parametro ai posti prenotati. Se l’evento è già passato o non ha posti o non ha più posti disponibili deve sollevare un’eccezione.
+
+        public void AddReservedSeats(int seats)
+        {
+            if(EventDate < DateTime.Now)
+            {
+                throw new ArgumentException("Event is already passed");
+            }
+            if(seats > EventCapacity)
+            {
+                throw new ArgumentException("There are not enough seats");
+            }
+            this.ReservedSeats += seats;
+        }
+
+        // DisdiciPosti: riduce del i posti prenotati del numero di posti indicati come parametro. Se l’evento è già passato o non ci sono i posti da disdire sufficienti, deve sollevare un’eccezione.
+
+        public void RemoveReservedSeats(int seats)
+        {
+            if(EventDate < DateTime.Now)
+            {
+                throw new ArgumentException("Event is already passed");
+            }
+            if(seats > this.ReservedSeats)
+            {
+                throw new ArgumentException("You are trying to remove more seats than you have reserved");
+            }
+            this.ReservedSeats -= seats;
+        }
+
+        public override string ToString()
+        {
+            return $"{this.EventDate.ToString("dd/MM/yyyy")} - {this.Title}";
+        }
+
+        
+
 
         
 
