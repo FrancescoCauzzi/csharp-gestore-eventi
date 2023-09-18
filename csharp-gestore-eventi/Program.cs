@@ -62,6 +62,7 @@ namespace csharp_gestore_eventi
             }
             */
             // MILESTONE 4
+            /*
             Write("Inserisci il nome del tuo programma Eventi: ");
             string programName = InputChecker.GetStringInput();
             ProgrammaEventi newProgram = new ProgrammaEventi(programName);
@@ -104,7 +105,12 @@ namespace csharp_gestore_eventi
             List<Event> events = newProgram.GetEventsByDate(dateToCheck);
             ProgrammaEventi.PrintEventList(events);
             // Eliminate tutti gli eventi dal vostro programma.
-            newProgram.EmptyEventList();
+            // newProgram.EmptyEventList();
+            */
+
+            // BONUS
+            WriteLine("Aggiungiamo anche una conferenza");
+            
 
             
 
