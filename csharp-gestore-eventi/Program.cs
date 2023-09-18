@@ -23,11 +23,15 @@ namespace csharp_gestore_eventi
             WriteLine();
             Write("Vuoi disdire dei posti? ");
             string answer = InputChecker.GetStringInput();
-            if(InputChecker.IsStringYesOrNo(answer))
+            if(InputChecker.IsStringYes(answer))
             {
                 Write("Quanti posti vuoi disdire? ");
                 int disdiredSeats = InputChecker.GetIntInput();
                 primoEvento.RemoveReservedSeats(disdiredSeats);
+                primoEvento.PrintReservedSeatsAndAvailableSeats();
+            }else{
+                WriteLine("Ok, va bene");
+                WriteLine();
                 primoEvento.PrintReservedSeatsAndAvailableSeats();
             }
         }
