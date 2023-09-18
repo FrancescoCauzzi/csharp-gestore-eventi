@@ -103,6 +103,8 @@ namespace csharp_gestore_eventi
             DateTime dateToCheck = InputChecker.GetDateTimeInput();
             List<Event> events = newProgram.GetEventsByDate(dateToCheck);
             ProgrammaEventi.PrintEventList(events);
+            // Eliminate tutti gli eventi dal vostro programma.
+            newProgram.EmptyEventList();
 
             
 
