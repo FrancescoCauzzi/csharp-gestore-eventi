@@ -52,14 +52,11 @@ namespace csharp_gestore_eventi
                     Write("Inserisci di nuovo il numero di posti che desideri disdire: ");
                     cancelledSeats = InputChecker.GetIntInput();
                     }
-                }
-
-                 
+                }                
 
                 primoEvento.PrintReservedSeatsAndAvailableSeats();
             }else{
-                WriteLine("Ok, va bene");
-                WriteLine();
+                WriteLine("Ok, va bene");                
                 primoEvento.PrintReservedSeatsAndAvailableSeats();
             }
         }
