@@ -12,26 +12,30 @@ namespace csharp_gestore_eventi
         // private fields
         private DateTime _eventDate;
 
-        private string _title;
+        private string _title = null!;
 
         private int _eventCapacity;
 
         // Properties
-        public string Title { get
+        public string Title
+        {
+            get
             {
                 return _title;
             }
-            set { 
-                if(!string.IsNullOrEmpty(value.Trim())) {
+            set
+            {
+                if (!string.IsNullOrEmpty(value.Trim()))
+                {
                     _title = value;
                 }
                 else
                 {
                     throw new ArgumentException("Il titolo deve essere inserito");
                 }
-            } 
+            }
         }
-        
+
 
         public DateTime EventDate
         {
@@ -54,13 +58,20 @@ namespace csharp_gestore_eventi
             }
         }
 
-        public int EventCapacity { get { 
-            return _eventCapacity;
-            }  set{
-                if(value > 0)
+        public int EventCapacity
+        {
+            get
+            {
+                return _eventCapacity;
+            }
+            set
+            {
+                if (value > 0)
                 {
                     _eventCapacity = value;
-                }else{
+                }
+                else
+                {
                     throw new ArgumentException("La capacità dell'evento deve essere maggiore di 0");
                 }
             }
@@ -84,11 +95,11 @@ namespace csharp_gestore_eventi
 
         public void AddReservedSeats(int seats)
         {
-            if(EventDate < DateTime.Now)
+            if (EventDate < DateTime.Now)
             {
                 throw new ArgumentException("L'evento è già passato");
             }
-            if(seats > EventCapacity)
+            if (seats > EventCapacity)
             {
                 throw new ArgumentException("Non ci sono abbastanza posti disponibili");
             }
@@ -99,11 +110,11 @@ namespace csharp_gestore_eventi
 
         public void RemoveReservedSeats(int seats)
         {
-            if(EventDate < DateTime.Now)
+            if (EventDate < DateTime.Now)
             {
                 throw new ArgumentException("L'evento è già passato");
             }
-            if(seats > this.ReservedSeats)
+            if (seats > this.ReservedSeats)
             {
                 throw new ArgumentException("Stai tentando di disdire più posti di quelli già prenotati");
             }
@@ -122,12 +133,12 @@ namespace csharp_gestore_eventi
             WriteLine($"Numero di posti disponibili: {this.EventCapacity - this.ReservedSeats}");
 
         }
-        
-
-        
 
 
-        
+
+
+
+
 
     }
 }

@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Console;
+using System.Globalization;
 
 // BONUSSS
 namespace csharp_gestore_eventi
 {
     public class Conferenza : Event
     {
-        private string _presenter;
+        private string _presenter = null!;
         private double _price;
-        public string Presenter 
+        public string Presenter
         {
             get
             {
@@ -31,40 +32,45 @@ namespace csharp_gestore_eventi
             }
         }
 
-        public double Price {
-            get{
+        public double Price
+        {
+            get
+            {
                 return _price;
             }
-            set{
-                if(value < 0)
+            set
+            {
+                if (value < 0)
                 {
-                    throw new ArgumentException("Il prezzo deve essere positivo");
-                }else{
-                    _price = value;
+                    throw new ArgumentException("Il prezzo deve avere un valore positivo");
                 }
-            }            
+                _price = value;
+
+            }
         }
 
         // Constructor
         public Conferenza(string name, DateTime date, int eventCapacity, string presenter, double price) : base(name, date, eventCapacity)
         {
-            this._presenter = presenter;
-            this._price = price;
+            this.Presenter = presenter;
+            this.Price = price;
         }
 
         // METHODS
-        public string GetFormattedDate(){
+        public string GetFormattedDate()
+        {
             return this.EventDate.ToString("dd/MM/yyyy");
         }
 
-        public string GetFormattedPrice(){
-            return this.Price.ToString("0.00");
-        
+        public string GetFormattedPrice()
+        {
+            return this.Price.ToString("0.00", CultureInfo.InvariantCulture);
+
         }
 
         public override string ToString()
         {
-            return $"{this.GetFormattedDate()} - {this.Title} -{this.Presenter} - {this.GetFormattedPrice}";
+            return $"{this.GetFormattedDate()} - {this.Title} - {this.Presenter} - {this.GetFormattedPrice()} euro";
         }
 
     }

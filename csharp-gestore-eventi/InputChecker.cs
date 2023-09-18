@@ -10,7 +10,7 @@ namespace csharp_gestore_eventi
 {
     public static class InputChecker
     {
-        
+
         public static int GetIntInput()
         {
             while (true)
@@ -21,6 +21,23 @@ namespace csharp_gestore_eventi
                     return result;
                 }
                 Write("Input non valido. Iserisci un numero intero: ");
+            }
+        }
+
+        public static double GetDoubleInput()
+        {
+            while (true)
+            {
+                string? inputString = ReadLine();
+                if (inputString!.Contains(','))
+                {
+                    inputString = inputString.Replace(',', '.');
+                }
+                if (double.TryParse(inputString, NumberStyles.Any, CultureInfo.InvariantCulture, out double result))
+                {
+                    return result;
+                }
+                Write("Input non valido, inserisci un numero");
             }
         }
 
@@ -46,27 +63,31 @@ namespace csharp_gestore_eventi
 
         public static bool IsStringYes(string myString)
         {
-            while(true){
-                string[] acceptableYesValues = { "si", "s","y","ye","yes" };
+            while (true)
+            {
+                string[] acceptableYesValues = { "si", "s", "y", "ye", "yes" };
                 string[] acceptableNoValues = { "no", "n" };
                 if (acceptableYesValues.Contains(myString.ToLower()))
                 {
                     return true;
-                }else if(acceptableNoValues.Contains(myString.ToLower()))
+                }
+                else if (acceptableNoValues.Contains(myString.ToLower()))
                 {
                     return false;
-                }else{
+                }
+                else
+                {
                     Console.Write("Input non valido, i valori ammessi sono si/no, scrivi un valore ammesso: ");
                     myString = GetStringInput();
                 }
             }
         }
-                   
+
         public static DateTime GetDateTimeInput()
         {
             while (true)
             {
-                
+
                 string? eventDate = ReadLine();
                 string format = "dd/MM/yyyy"; // Specify the format
 

@@ -44,16 +44,21 @@ namespace csharp_gestore_eventi
                     eventsByDate.Add(_event);
                 }
             } 
+            
             return eventsByDate;
         }
 
         // un metodo statico che si occupa, presa una lista di eventi, di stamparla in Console, o ancora meglio vi restituisca la rappresentazione in stringa della vostra lista di eventi.
         public static void PrintEventList(List<Event> events)
-        {           
-            foreach(Event _event in events)
-            {
-                WriteLine($"{_event}");
-            }            
+        {    
+            if(events.Count > 0){
+                foreach(Event _event in events)
+                {
+                    WriteLine($"{_event}");
+                }            
+            }else{
+                WriteLine("Non ci sono eventi da visualizzare");
+            }       
         }
 
         // un metodo che restituisce quanti eventi sono presenti nel programma eventi attualmente.
