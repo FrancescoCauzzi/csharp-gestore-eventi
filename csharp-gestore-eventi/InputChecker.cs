@@ -43,6 +43,30 @@ namespace csharp_gestore_eventi
 
             }
         }
+
+        public static bool IsStringYesOrNo(string myString)
+        {
+            while(true){
+
+            string[] acceptableYesValues = { "si", "s","y","ye","yes" };
+            string[] acceptableNoValues = { "no", "n" };
+            if (acceptableYesValues.Contains(myString.ToLower()))
+            {
+                return true;
+            }else if(acceptableNoValues.Contains(myString.ToLower()))
+            {
+                return false;
+            }else{
+                Console.WriteLine("Input non valido, i valori ammessi sono: si, no");
+                continue;
+            }
+            }
+        }
+            
+        
+        
+
+        
         public static DateTime GetDateTimeInput()
         {
             while (true)

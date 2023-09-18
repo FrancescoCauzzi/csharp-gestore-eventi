@@ -20,9 +20,22 @@ namespace csharp_gestore_eventi
             int reservedSeats = InputChecker.GetIntInput();
             primoEvento.AddReservedSeats(reservedSeats);
             primoEvento.PrintReservedSeatsAndAvailableSeats();
-
+            WriteLine();
+            Write("Vuoi disdire dei posti? ");
+            string answer = InputChecker.GetStringInput();
+            if(InputChecker.IsStringYesOrNo(answer))
+            {
+                Write("Quanti posti vuoi disdire? ");
+                int disdiredSeats = InputChecker.GetIntInput();
+                primoEvento.RemoveReservedSeats(disdiredSeats);
+                primoEvento.PrintReservedSeatsAndAvailableSeats();
+            }
+        }
     }
+            
+
+    
 }
-}
+
 
                     
