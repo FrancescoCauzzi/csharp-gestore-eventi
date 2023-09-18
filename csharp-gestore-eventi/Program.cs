@@ -18,7 +18,20 @@ namespace csharp_gestore_eventi
             WriteLine();
             Write("Quanti posti desideri prenotare? ");
             int reservedSeats = InputChecker.GetIntInput();
-            primoEvento.AddReservedSeats(reservedSeats);
+            while(true){
+                try{
+                    primoEvento.AddReservedSeats(reservedSeats);
+                    break;
+                }
+                catch(Exception ex)
+                {
+                    WriteLine(ex.Message);
+                    Write("Inserisci di nuovo il numero di posti desideri prenotare: ");
+                    reservedSeats = InputChecker.GetIntInput();
+                }
+            }
+
+            
             primoEvento.PrintReservedSeatsAndAvailableSeats();
             WriteLine();
             Write("Vuoi disdire dei posti? ");
@@ -26,8 +39,23 @@ namespace csharp_gestore_eventi
             if(InputChecker.IsStringYes(answer))
             {
                 Write("Quanti posti vuoi disdire? ");
-                int disdiredSeats = InputChecker.GetIntInput();
-                primoEvento.RemoveReservedSeats(disdiredSeats);
+                int cancelledSeats = InputChecker.GetIntInput();
+
+                while(true){
+                    try{
+                        primoEvento.RemoveReservedSeats(cancelledSeats); 
+                        break;
+                    }
+                    catch(Exception ex)
+                    {
+                    WriteLine(ex.Message);
+                    Write("Inserisci di nuovo il numero di posti che desideri disdire: ");
+                    cancelledSeats = InputChecker.GetIntInput();
+                    }
+                }
+
+                 
+
                 primoEvento.PrintReservedSeatsAndAvailableSeats();
             }else{
                 WriteLine("Ok, va bene");

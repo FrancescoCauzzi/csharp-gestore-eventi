@@ -86,11 +86,11 @@ namespace csharp_gestore_eventi
         {
             if(EventDate < DateTime.Now)
             {
-                throw new ArgumentException("Event is already passed");
+                throw new ArgumentException("L'evento è già passato");
             }
             if(seats > EventCapacity)
             {
-                throw new ArgumentException("There are not enough seats");
+                throw new ArgumentException("Non ci sono abbastanza posti disponibili");
             }
             this.ReservedSeats += seats;
         }
@@ -101,11 +101,11 @@ namespace csharp_gestore_eventi
         {
             if(EventDate < DateTime.Now)
             {
-                throw new ArgumentException("Event is already passed");
+                throw new ArgumentException("L'evento è già passato");
             }
             if(seats > this.ReservedSeats)
             {
-                throw new ArgumentException("You are trying to remove more seats than you have reserved");
+                throw new ArgumentException("Stai tentando di disdire più posti di quelli già prenotati");
             }
             this.ReservedSeats -= seats;
         }
@@ -117,6 +117,7 @@ namespace csharp_gestore_eventi
 
         public void PrintReservedSeatsAndAvailableSeats()
         {
+            WriteLine();
             WriteLine($"Numero di posti prenotati: {this.ReservedSeats}");
             WriteLine($"Numero di posti disponibili: {this.EventCapacity - this.ReservedSeats}");
 

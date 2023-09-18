@@ -20,7 +20,7 @@ namespace csharp_gestore_eventi
                 {
                     return result;
                 }
-                WriteLine("Input non valido. Iserisci un numero intero.");
+                Write("Input non valido. Iserisci un numero intero: ");
             }
         }
 
@@ -34,7 +34,7 @@ namespace csharp_gestore_eventi
                 {
                     if (int.TryParse(word, out int result))
                     {
-                        WriteLine("Input non valido, inserisci una stringa");
+                        Write("Input non valido, inserisci una stringa: ");
                         continue;
                     }
                     return word;
@@ -58,7 +58,6 @@ namespace csharp_gestore_eventi
                 }else{
                     Console.Write("Input non valido, i valori ammessi sono si/no, scrivi un valore ammesso: ");
                     myString = GetStringInput();
-                    
                 }
             }
         }
@@ -81,7 +80,7 @@ namespace csharp_gestore_eventi
                 }
                 else
                 {
-                    WriteLine("Data non valida, inserisci una data nel formato MM/dd/yyyy");
+                    Write("Data non valida, inserisci una data nel formato MM/dd/yyyy: ");
                 }
             }
         }
