@@ -61,11 +61,7 @@ namespace csharp_gestore_eventi
                 }
             }
         }
-            
-        
-        
-
-        
+                   
         public static DateTime GetDateTimeInput()
         {
             while (true)
@@ -80,7 +76,7 @@ namespace csharp_gestore_eventi
                 }
                 else
                 {
-                    Write("Data non valida, inserisci una data nel formato MM/dd/yyyy: ");
+                    Write("Data non valida, inserisci una data nel formato gg/mm/yyyy: ");
                 }
             }
         }

@@ -5,6 +5,7 @@ namespace csharp_gestore_eventi
     {
         static void Main(string[] args)
         {
+            /*
             Write("Inserisci il nome dell'evento: ");
             string eventName = InputChecker.GetStringInput();
             Write("Inserisci la data dell'evento: ");
@@ -59,6 +60,56 @@ namespace csharp_gestore_eventi
                 WriteLine("Ok, va bene");                
                 primoEvento.PrintReservedSeatsAndAvailableSeats();
             }
+            */
+            // MILESTONE 4
+            Write("Inserisci il nome del tuo programma Eventi: ");
+            string programName = InputChecker.GetStringInput();
+            ProgrammaEventi newProgram = new ProgrammaEventi(programName);
+            WriteLine();
+            Write("Indica il numero di eventi da inserire: ");
+            int ?programNumber = InputChecker.GetIntInput();
+            WriteLine();
+
+            for (int i = 1; i <= programNumber; i++)
+            {
+                while (true)
+                {
+                    try
+                    {
+                        Write($"Inserisci il nome del {i}° evento: ");
+                        string eventTitle = InputChecker.GetStringInput();
+                        Write("Inserisci la data dell'evento (gg/mm/yyyy): ");
+                        DateTime eventDate = InputChecker.GetDateTimeInput();
+                        Write("Inserisci il numero di posti totali: ");
+                        int totalSeats = InputChecker.GetIntInput();
+
+                        Event nuovoEvento = new Event(eventTitle, eventDate, totalSeats);
+                        newProgram.AddEvent(nuovoEvento);
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        WriteLine(ex.Message);
+                        WriteLine($"Inserisci i dati del {i}° evento nuovamente");
+                    }
+                }
+            }
+            WriteLine();
+            WriteLine("Il numero di eventi nel programma é: " + newProgram.GetEventsNumber());
+            
+            WriteLine(newProgram.GetEventProgramInfo());
+            WriteLine();
+            Write($"Inserisci una data per sapere che eventi ci saranno il (gg/mm/yyyy): ");
+            DateTime dateToCheck = InputChecker.GetDateTimeInput();
+            List<Event> events = newProgram.GetEventsByDate(dateToCheck);
+            ProgrammaEventi.PrintEventList(events);
+
+            
+
+
+
+
+
         }
     }
             

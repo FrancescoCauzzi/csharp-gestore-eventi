@@ -28,6 +28,8 @@ namespace csharp_gestore_eventi
         public void AddEvent(Event evento)
         {
             this.Events.Add(evento);
+            WriteLine("Evento aggiunto correttamente");
+        
         }
 
         // GetEventsByDate: un metodo che restituisce una lista di eventi con tutti gli eventi presenti in una certa data.
@@ -35,51 +37,41 @@ namespace csharp_gestore_eventi
         public List<Event> GetEventsByDate(DateTime date)
         {
             List<Event> eventsByDate = new List<Event>();
-            foreach (Event e in this.Events)
+            foreach (Event _event in this.Events)
             {
-                if(e.EventDate == date)
+                if (_event.EventDate == date)
                 {
-                    eventsByDate.Add(e);
+                    eventsByDate.Add(_event);
                 }
-            }
+            } 
             return eventsByDate;
         }
 
         // un metodo statico che si occupa, presa una lista di eventi, di stamparla in Console, o ancora meglio vi restituisca la rappresentazione in stringa della vostra lista di eventi.
         public static void PrintEventList(List<Event> events)
-        {
-            Write("[");
-
-            for (int i = 0; i < events.Count; i++)
+        {           
+            foreach(Event _event in events)
             {
-                if (i < events.Count - 1)
-                {
-                    Write(events[i] + ", ");
-                }
-                else
-                {
-                    Write(events[i]);
-                }
-            }
-
-            WriteLine("]");
+                WriteLine($"{_event}");
+            }            
         }
 
         // un metodo che restituisce quanti eventi sono presenti nel programma eventi attualmente.
-        public int GetEventNumber(){
+        public int GetEventsNumber(){
             return this.Events.Count;        
         }
 
         // un metodo che svuota la lista di eventi.
 
         public void EmptyEventList(){
-            this.Events.Clear();        
+            this.Events.Clear();
+            WriteLine("La lista di eventi è stata svuotata");        
         }
 
         // un metodo che restituisce una stringa che mostra il titolo del programma e tutti glieventi aggiunti alla lista.
 
         public string GetEventProgramInfo(){
-            string myString = "Nome programma evento:\n";
+            string myString = $"Ecco il tuo programma eventi:\n{this.Title}\n";
             foreach (Event _event in this.Events)
             {
                 myString += $"{_event}\n";          

@@ -27,7 +27,7 @@ namespace csharp_gestore_eventi
                 }
                 else
                 {
-                    throw new ArgumentException("The title must be inserted");
+                    throw new ArgumentException("Il titolo deve essere inserito");
                 }
             } 
         }
@@ -49,7 +49,7 @@ namespace csharp_gestore_eventi
                 else
                 {
                     // Optionally, you can throw an exception or take some other action if the condition is not met
-                    throw new ArgumentException("Event date cannot be in the past.");
+                    throw new ArgumentException("L'evento deve essere programmato nel futuro");
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace csharp_gestore_eventi
                 {
                     _eventCapacity = value;
                 }else{
-                    throw new ArgumentException("Capacity must be greater than 0");
+                    throw new ArgumentException("La capacità dell'evento deve essere maggiore di 0");
                 }
             }
         }
