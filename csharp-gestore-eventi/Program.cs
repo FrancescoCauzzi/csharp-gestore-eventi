@@ -18,9 +18,9 @@ namespace csharp_gestore_eventi
             // Dopo che l’evento è stato istanziato, chiedete all’utente se e quante prenotazioni vuole fare e provare ad effettuarle.
             WriteLine();
             Write("Quanti posti desideri prenotare? ");
-            int reservedSeats = InputChecker.GetIntInput();
             while(true){
                 try{
+                    int reservedSeats = InputChecker.GetIntInput();
                     primoEvento.AddReservedSeats(reservedSeats);
                     break;
                 }
@@ -28,7 +28,7 @@ namespace csharp_gestore_eventi
                 {
                     WriteLine(ex.Message);
                     Write("Inserisci di nuovo il numero di posti desideri prenotare: ");
-                    reservedSeats = InputChecker.GetIntInput();
+                    
                 }
             }
 
@@ -40,18 +40,18 @@ namespace csharp_gestore_eventi
             if(InputChecker.IsStringYes(answer))
             {
                 Write("Quanti posti vuoi disdire? ");
-                int cancelledSeats = InputChecker.GetIntInput();
 
                 while(true){
                     try{
+                        int cancelledSeats = InputChecker.GetIntInput();
                         primoEvento.RemoveReservedSeats(cancelledSeats); 
                         break;
                     }
                     catch(Exception ex)
                     {
-                    WriteLine(ex.Message);
-                    Write("Inserisci di nuovo il numero di posti che desideri disdire: ");
-                    cancelledSeats = InputChecker.GetIntInput();
+                        WriteLine(ex.Message);
+                        Write("Inserisci di nuovo il numero di posti che desideri disdire: ");
+                        
                     }
                 }                
 
