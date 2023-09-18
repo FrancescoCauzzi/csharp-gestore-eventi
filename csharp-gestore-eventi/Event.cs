@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Console;
 
 namespace csharp_gestore_eventi
 {
@@ -11,14 +12,14 @@ namespace csharp_gestore_eventi
         // private fields
         private DateTime _eventDate;
 
-        private string ?_title;
+        private string _title;
 
         private int _eventCapacity;
 
         // Properties
         public string Title { get
             {
-                return _title.ToString();
+                return _title;
             }
             set { 
                 if(!string.IsNullOrEmpty(value.Trim())) {
@@ -28,8 +29,8 @@ namespace csharp_gestore_eventi
                 {
                     throw new ArgumentException("The title must be inserted");
                 }
-            
-            } }
+            } 
+        }
         
 
         public DateTime EventDate
@@ -70,12 +71,12 @@ namespace csharp_gestore_eventi
         // Constructor
         //Dichiarare un costruttore che prenda come parametri il titolo, la data e i posti a disposizione e inizializza gli opportuni attributi facendo uso dei metodi e controlli già fatti. Per l’attributo posti prenotati invece si occupa di inizializzarlo lui a 0.
 
-        public Event(string _title, DateTime _eventDate, int _eventCapacity)
+        public Event(string title, DateTime eventDate, int eventCapacity)
         {
-            Title = _title;
-            EventDate = _eventDate;
-            EventCapacity = _eventCapacity;
-            ReservedSeats = 0;
+            this.Title = title;
+            this.EventDate = eventDate;
+            this.EventCapacity = eventCapacity;
+            this.ReservedSeats = 0;
         }
 
         // Public Methods
@@ -113,6 +114,14 @@ namespace csharp_gestore_eventi
         {
             return $"{this.EventDate.ToString("dd/MM/yyyy")} - {this.Title}";
         }
+
+        public void PrintReservedSeatsAndAvailableSeats()
+        {
+            WriteLine($"Numero di posti prenotati: {this.ReservedSeats}");
+            WriteLine($"Numero di posti disponibili: {this.EventCapacity - this.ReservedSeats}");
+
+        }
+        
 
         
 
